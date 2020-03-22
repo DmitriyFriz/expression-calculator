@@ -11,6 +11,13 @@ function expressionCalculator(expr) {
   }
 
   for (let i = 0; i < arr.length; i++ ){
+    let brackets = 0;
+    if (arr[i] === "(") brackets++;
+    if (arr[i] === ")") brackets--;
+    if (!(brackets === 0)) throw new Error('ExpressionError: Brackets must be paired');
+  }
+
+  for (let i = 0; i < arr.length; i++ ){
     if (arr[i] == '*'){
       let result = Number(arr[i-1]) * Number(arr[i+1]);
       arr.splice(i-1, 3, result);
